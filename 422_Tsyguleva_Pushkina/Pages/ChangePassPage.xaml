@@ -8,7 +8,25 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ChangePassPage">
 
-    <Grid>
-        
+    <Grid HorizontalAlignment="Center"  Width="800"   Height="450"  VerticalAlignment="Top" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="271*" />
+            <ColumnDefinition Width="529*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="217*" />
+            <RowDefinition Height="233*" />
+        </Grid.RowDefinitions>
+        <Label Content="Новый Пароль" x:Name="labelPass" Margin="173,188,0,232" HorizontalAlignment="Left" Width="98" Grid.RowSpan="2" />
+        <Label Content="Логин" x:Name="labelLogin" Margin="173,118,0,232" HorizontalAlignment="Left" Width="64" Grid.RowSpan="2" />
+        <Label Content="Старый пароль" x:Name="labelOld" Margin="173,150,0,232" HorizontalAlignment="Left" Width="98" Grid.RowSpan="2" />
+        <Label Content="Повторите новый пароль" x:Name="Passu" Margin="173,5,0,196" HorizontalAlignment="Left" Width="155" Grid.Row="1" Grid.ColumnSpan="2" />
+
+        <TextBox x:Name="TbLogin" Background="Transparent" Margin="62,0,0,72" TextWrapping="Wrap" ToolTip="Введите логин или почту" Height="34" VerticalAlignment="Bottom"  HorizontalAlignment="Left"  Width="134"  Grid.Column="1" />
+        <PasswordBox x:Name="NewPasswordBox"  Background="Transparent"  ToolTip="Введите пароль"  Margin="0,0,333,0"  HorizontalAlignment="Right"  Width="134"  Height="32"  VerticalAlignment="Bottom"  Grid.Column="1"  />
+        <PasswordBox x:Name="CurrentPasswordBox"  Background="Transparent"  ToolTip="Введите пароль"  Margin="0,0,333,35"  HorizontalAlignment="Right"  Width="134"  Height="32"  VerticalAlignment="Bottom"  Grid.Column="1"  />
+        <PasswordBox x:Name="ConfirmPasswordBox"  Background="Transparent"  ToolTip="Введите пароль"  Margin="0,0,333,196"  HorizontalAlignment="Right"  Width="134"  Height="32"  VerticalAlignment="Bottom"  Grid.Column="1" Grid.Row="1" />
+       
+        <Button x:Name="SaveChangePassword" Margin="69,51,0,0" Height="34"  Content="Cохранить" Grid.Row="1"  HorizontalAlignment="Left"  Width="120" VerticalAlignment="Top" Grid.Column="1" Click="ButtonEnter_OnClick" />
     </Grid>
 </Page>
