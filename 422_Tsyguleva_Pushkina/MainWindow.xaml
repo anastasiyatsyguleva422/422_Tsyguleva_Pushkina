@@ -21,7 +21,7 @@
             <RowDefinition ></RowDefinition>
             <RowDefinition Height="45"></RowDefinition>
         </Grid.RowDefinitions>
-        <Frame x:Name="MainFrame" Grid.Row="1"   Grid.Column="0" Grid.ColumnSpan="6" NavigationUIVisibility="Visible"></Frame>
+        <Frame x:Name="MainFrame" Grid.Row="1"   Grid.Column="0" Grid.ColumnSpan="6" NavigationUIVisibility="Hidden"></Frame>
         <TextBlock x:Name="DateTimeNow" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2"/>
         <Button x:Name="nazad" Content="Назад" Grid.Column="0" Height="45"  Click="nazad_Click_1"/>
     </Grid>
