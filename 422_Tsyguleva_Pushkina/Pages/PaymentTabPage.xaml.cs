@@ -51,7 +51,6 @@ namespace _422_Tsyguleva_Pushkina.Pages
                 try
                 {
 
-                    //DbContextHelper.GetContext().Payment.RemoveRange(paymentForRemoving); DbContextHelper.GetContext().SaveChanges();
                     MessageBox.Show("Данные успешно удалены!"); DataGridPayment.ItemsSource =
                    DbContextHelper.GetContext().Payment.ToList();
                 }

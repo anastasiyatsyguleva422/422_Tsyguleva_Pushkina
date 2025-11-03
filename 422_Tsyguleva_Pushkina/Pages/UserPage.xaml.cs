@@ -62,13 +62,11 @@ namespace _422_Tsyguleva_Pushkina.Pages
             try
             {
                 List<User> currentUsers = DbContextHelper.GetContext().User.ToList();
-                //Филтрация по фамилии 
                 if (!string.IsNullOrWhiteSpace(fioFilterTextBox.Text))
                 {
                     currentUsers = currentUsers.Where(x =>
                    x.FIO.ToLower().Contains(fioFilterTextBox.Text.ToLower())).ToList();
                 }
-                //Фильтрация по роли 
                 if (onlyAdminCheckBox.IsChecked.Value)
                 {
                     currentUsers = currentUsers.Where(x => x.Role == "Admin").ToList();

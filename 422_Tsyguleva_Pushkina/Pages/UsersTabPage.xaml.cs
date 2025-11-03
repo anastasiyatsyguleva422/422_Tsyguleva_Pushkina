@@ -56,7 +56,6 @@ namespace _422_Tsyguleva_Pushkina.Pages
                 try
                 {
 
-                    //DbContextHelper.GetContext().User.RemoveRange(usersForRemoving);
                     DbContextHelper.GetContext().SaveChanges();
                     MessageBox.Show("Данные успешно удалены!");
                     DataGridUser.ItemsSource = DbContextHelper.GetContext().User.ToList();

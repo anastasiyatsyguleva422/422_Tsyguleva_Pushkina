@@ -3,12 +3,32 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:_422_Tsyguleva_Pushkina.Pages"
+      xmlns:wf="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DiagrammPage">
+      Title="Диаграммы платежей"
+      Background="White">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="20,15" HorizontalAlignment="Center">
+            <Label Content="Пользователь:" Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold"/>
+            <ComboBox x:Name="UserComboBox" Width="200" Height="35" Margin="0,0,30,0" DisplayMemberPath="FIO"/>
+
+            <Label Content="Тип диаграммы:" Margin="0,0,10,0" VerticalAlignment="Center" FontWeight="SemiBold"/>
+            <ComboBox x:Name="ChartTypeComboBox" Width="180" Height="35" Margin="0,0,30,0"/>
+
+            <Button x:Name="ExportToExcelButton" Content="Excel" Width="80" Height="35" Margin="0,0,15,0"/>
+            <Button x:Name="ExportToWordButton" Content="Word" Width="80" Height="35"/>
+        </StackPanel>
+
+        <Border Grid.Row="1" Margin="20,10" BorderThickness="1" BorderBrush="LightGray" Background="White" CornerRadius="4">
+            <wf:WindowsFormsHost x:Name="ChartHost">
+            </wf:WindowsFormsHost>
+        </Border>
     </Grid>
 </Page>
