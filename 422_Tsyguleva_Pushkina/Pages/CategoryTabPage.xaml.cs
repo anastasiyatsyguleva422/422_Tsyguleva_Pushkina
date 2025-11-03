@@ -1,59 +1,62 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace _422_Tsyguleva_Pushkina.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для CategoryTabPage.xaml
-    /// </summary>
     public partial class CategoryTabPage : Page
     {
         public CategoryTabPage()
         {
             InitializeComponent();
-            DataGridCategory.ItemsSource =
-           DbContextHelper.GetContext().Category.ToList();
-            this.IsVisibleChanged += Page_IsVisibleChanged;
+            this.Loaded += Page_Loaded;
         }
-        private void Page_IsVisibleChanged(object sender,
-       DependencyPropertyChangedEventArgs e)
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Visibility == Visibility.Visible)
-            {
-                DbContextHelper.GetContext().ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
-                DataGridCategory.ItemsSource = DbContextHelper.GetContext().Category.ToList();
-            }
+            RefreshData();
         }
+
+        private void RefreshData()
+        {
+            DbContextHelper.GetContext().ChangeTracker.Entries().ToList().ForEach(x => x.Reload());
+            DataGridCategory.ItemsSource = DbContextHelper.GetContext().Category.ToList();
+        }
+
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             NavigationService?.Navigate(new AddCategoryPage(null));
         }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            var category = (sender as Button).DataContext as Category;
+            NavigationService?.Navigate(new AddCategoryPage(category));
+        }
+
         private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
-            var categoryForRemoving =
-           DataGridCategory.SelectedItems.Cast<Category>().ToList();
-            if (MessageBox.Show($"Вы точно хотите удалить записи в количестве {categoryForRemoving.Count()} элементов?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) ==
-           MessageBoxResult.Yes)
+            var categoryForRemoving = DataGridCategory.SelectedItems.Cast<Category>().ToList();
+
+            if (categoryForRemoving.Count == 0)
+            {
+                MessageBox.Show("Выберите хотя бы одну запись для удаления.");
+                return;
+            }
+
+            if (MessageBox.Show($"Вы точно хотите удалить {categoryForRemoving.Count} элемент(ов)?",
+                                "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
+                    foreach (var item in categoryForRemoving)
+                        DbContextHelper.GetContext().Category.Remove(item);
 
-                    //DbContextHelper.GetContext().Category.RemoveRange(categoryForRemoving); 
                     DbContextHelper.GetContext().SaveChanges();
-                    MessageBox.Show("Данные успешно удалены!"); 
-                    DataGridCategory.ItemsSource = DbContextHelper.GetContext().Category.ToList();
+                    MessageBox.Show("Данные успешно удалены!");
+                    RefreshData();
                 }
                 catch (Exception ex)
                 {
@@ -61,9 +64,6 @@ namespace _422_Tsyguleva_Pushkina.Pages
                 }
             }
         }
-        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Pages.AddCategoryPage((sender as Button).DataContext as Category));
-        }
+
     }
 }

@@ -15,12 +15,10 @@ namespace _422_Tsyguleva_Pushkina
     
     public partial class Tsyguleva_Pushkina_DB_PaymentEntities : DbContext
     {
-
         public Tsyguleva_Pushkina_DB_PaymentEntities()
             : base("name=Tsyguleva_Pushkina_DB_PaymentEntities")
         {
         }
-
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

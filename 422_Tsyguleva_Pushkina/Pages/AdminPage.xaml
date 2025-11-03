@@ -9,10 +9,25 @@
       Title="AdminPage">
 
     <Grid Background="White">
-        <Button x:Name="BtnTab1" Content="Таблица пользователей"  HorizontalAlignment="Left" Margin="68,160,0,0" VerticalAlignment="Top"  RenderTransformOrigin="-1.326,0.371" Height="41" Width="181"  Click="BtnTab1_Click"/>
-        <Button x:Name="BtnTab2" Content="Таблица категорий"  HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Top"  RenderTransformOrigin="-1.326,0.371" Height="41" Width="173"  Click="BtnTab2_Click"/>
-        <Button x:Name="BtnTab3" Content="Таблица платежей"  HorizontalAlignment="Left" Margin="531,160,0,0" VerticalAlignment="Top"  RenderTransformOrigin="-1.326,0.371" Height="41" Width="163"  Click="BtnTab3_Click"/>
-        <Button x:Name="BtnTab4" Content="Диаграммы"  HorizontalAlignment="Center" Margin="0,321,0,0" VerticalAlignment="Top"  RenderTransformOrigin="-1.326,0.371" Height="41" Width="131"  Click="BtnTab4_Click"/>
-    </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                <Button x:Name="BtnTab1" Content="Таблица пользователей" Width="180" Height="40" Margin="10" Click="BtnTab1_Click"/>
+                <Button x:Name="BtnTab2" Content="Таблица категорий" Width="180" Height="40" Margin="10" Click="BtnTab2_Click"/>
+                <Button x:Name="BtnTab3" Content="Таблица платежей" Width="180" Height="40" Margin="10" Click="BtnTab3_Click"/>
+            </StackPanel>
+            <Button x:Name="BtnTab4" Content="Диаграммы" Width="180" Height="40" HorizontalAlignment="Center" Click="BtnTab4_Click"/>
+        </StackPanel>
+    </Grid>
 </Page>

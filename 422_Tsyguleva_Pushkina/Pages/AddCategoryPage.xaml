@@ -13,12 +13,28 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Название категории" Grid.Row="0" FontSize="20"  Margin="55,91,319,71" RenderTransformOrigin="0.258,2.273"/>
-        <TextBox x:Name="TBCategoryName" Grid.Row="0" 
- Margin="400,94,164,103" 
- Text="{Binding Name}" />
-        <Button x:Name="ButtonSaveCategory" Content="Сохранить"  Grid.Row="1" Click="ButtonSaveCategory_Click" Margin="249,89,249,101"/>
-        <Button x:Name="ButtonClean" Content="Очистить" Grid.Row="1"  Click="ButtonClean_Click" Margin="249,148,249,42"/>
+
+        <TextBlock Text="Название категории" 
+                   Grid.Row="0" 
+                   FontSize="20"  
+                   Margin="55,91,319,71"/>
+
+        <TextBox x:Name="TBCategoryName" 
+                 Grid.Row="0" 
+                 Margin="400,94,164,103" 
+                 Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Button x:Name="ButtonSaveCategory" 
+                Content="Сохранить"  
+                Grid.Row="1" 
+                Click="ButtonSaveCategory_Click" 
+                Margin="249,89,249,101"/>
+
+        <Button x:Name="ButtonClean" 
+                Content="Очистить" 
+                Grid.Row="1"  
+                Click="ButtonClean_Click" 
+                Margin="249,148,249,42"/>
     </Grid>
 
 </Page>

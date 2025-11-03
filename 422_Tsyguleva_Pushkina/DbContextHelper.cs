@@ -8,19 +8,20 @@ namespace _422_Tsyguleva_Pushkina
 {
     public static class DbContextHelper
     {
+        private static Tsyguleva_Pushkina_DB_PaymentEntities _context;
+
         public static Tsyguleva_Pushkina_DB_PaymentEntities GetContext()
         {
-            return new Tsyguleva_Pushkina_DB_PaymentEntities();
+            if (_context == null)
+                _context = new Tsyguleva_Pushkina_DB_PaymentEntities();
+            return _context;
         }
 
         public static List<T> GetAll<T>() where T : class
         {
-            using (var context = new Tsyguleva_Pushkina_DB_PaymentEntities())
-            {
-                return context.Set<T>().ToList();
-            }
+            return GetContext().Set<T>().ToList();
         }
-
+    
         //public static void RemoveRange<T>(List<T> entities) where T : class
         //{
         //    using (var context = new Tsyguleva_Pushkina_DB_PaymentEntities())
