@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6c6a03cc279d438b9ccc030bc638a183" Name="Diagram1" ZoomLevel="86">
+      <Diagram DiagramId="60da6feee8f94fd39130e51f7a9ecaa6" Name="Diagram1">
         <EntityTypeShape EntityType="Tsyguleva_Pushkina_DB_PaymentModel.Category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Tsyguleva_Pushkina_DB_PaymentModel.Payment" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Tsyguleva_Pushkina_DB_PaymentModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />

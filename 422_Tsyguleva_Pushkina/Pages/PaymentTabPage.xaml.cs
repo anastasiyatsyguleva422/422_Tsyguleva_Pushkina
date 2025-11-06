@@ -85,14 +85,12 @@ namespace _422_Tsyguleva_Pushkina.Pages
             {
                 try
                 {
-                    // ВАЖНО: В текущей реализации отсутствует фактическое удаление записей из базы данных
-                    // Для полноценной функциональности необходимо добавить код удаления:
-                    // 
-                    // foreach (var payment in paymentForRemoving)
-                    // {
-                    //     DbContextHelper.GetContext().Payment.Remove(payment);
-                    // }
-                    // DbContextHelper.GetContext().SaveChanges();
+                    
+                    foreach (var payment in paymentForRemoving)
+                    {
+                        DbContextHelper.GetContext().Payment.Remove(payment);
+                    }
+                    DbContextHelper.GetContext().SaveChanges();
 
                     MessageBox.Show("Данные успешно удалены!");
 

@@ -96,31 +96,39 @@ namespace _422_Tsyguleva_Pushkina.Pages
             {
                 try
                 {
-                    // ВАЖНО: В текущей реализации отсутствует фактическое удаление записей из базы данных
-                    // Для полноценной функциональности необходимо добавить код удаления:
-                    // 
-                    // foreach (var user in usersForRemoving)
-                    // {
-                    //     DbContextHelper.GetContext().User.Remove(user);
-                    // }
-                    // DbContextHelper.GetContext().SaveChanges();
+                    var context = DbContextHelper.GetContext();
 
-                    // Сообщение об успешном удалении (в текущей реализации - преждевременное)
+                    // Получаем актуальные сущности из контекста для удаления
+                    var usersToRemove = new List<User>();
+                    foreach (var user in usersForRemoving)
+                    {
+                        // Находим сущность в контексте по ID
+                        var userInContext = context.User.Find(user.ID);
+                        if (userInContext != null)
+                        {
+                            usersToRemove.Add(userInContext);
+                        }
+                    }
+
+                    // Удаляем сущности, которые найдены в контексте
+                    foreach (var user in usersToRemove)
+                    {
+                        context.User.Remove(user);
+                    }
+
+                    context.SaveChanges();
+
+                    // Сообщение об успешном удалении
                     MessageBox.Show("Данные успешно удалены!");
 
                     // Обновление DataGrid для отражения изменений
-                    DataGridUser.ItemsSource = DbContextHelper.GetContext().User.ToList();
+                    DataGridUser.ItemsSource = context.User.ToList();
                 }
                 catch (Exception ex)
                 {
                     // Обработка исключений при работе с базой данных
-                    MessageBox.Show(ex.Message.ToString());
+                    MessageBox.Show($"Ошибка при удалении: {ex.Message}");
                 }
-                foreach (var user in usersForRemoving)
-                {
-                    DbContextHelper.GetContext().User.Remove(user);
-                }
-                DbContextHelper.GetContext().SaveChanges();
             }
         }
 

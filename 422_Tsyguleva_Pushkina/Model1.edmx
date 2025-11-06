@@ -17,8 +17,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="CategoryID" Type="int" />
           <Property Name="Date" Type="date" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Num" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -46,7 +46,7 @@
           <Property Name="Photo" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_Payment_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category">
@@ -58,7 +58,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Payment_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -101,8 +101,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="CategoryID" Type="Int32" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Num" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
@@ -133,7 +133,7 @@
           <NavigationProperty Name="Payment" Relationship="Self.FK_Payment_User" FromRole="User" ToRole="Payment" />
         </EntityType>
         <Association Name="FK_Payment_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category">
@@ -145,7 +145,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Payment_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
